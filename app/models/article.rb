@@ -15,6 +15,16 @@ class Article
           end
         end
 
+        dimension 'Location', foreign_key: 'location_id' do
+          hierarchy has_all: true, all_member_name: 'All Locations', primary_key: 'id' do
+            table 'vt_dim_locations'
+            level 'Continent', column: 'continent', unique_members: false
+            level 'Country', column: 'country', unique_members: false
+            level 'Subdivision', column: 'subdivision', unique_members: false
+            level 'City', column: 'city', unique_members: false
+          end
+        end
+
         measure 'Views', column: 'views', aggregator: 'sum'
       end
     end
@@ -23,7 +33,8 @@ class Article
   def self.olap
     Mondrian::OLAP::Connection.create(
       driver: 'jdbc',
-      jdbc_url: 'jdbc:vertica://52.44.235.220:5433/?user=ds_readonly&password=ds123_analytics',
+      #jdbc_url: 'jdbc:vertica://52.44.235.220:5433/?user=ds_readonly&password=ds123_analytics',
+      jdbc_url: 'jdbc:vertica://vertica-stagingvpc-017.aws.simplereach.com/?user=dbadmin&password=simplereach_analytics',
       jdbc_driver: 'com.vertica.jdbc.Driver',
       schema: schema
     )

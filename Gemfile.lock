@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/rsim/mondrian-olap.git
-  revision: c7d975d5e21031bbdff0a972b95ae26d32f23006
-  specs:
-    mondrian-olap (0.3.0)
-      nokogiri (~> 1.5.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -55,9 +48,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    mondrian-olap (0.8.0)
+      nokogiri
     multi_json (1.0.3)
     nifty-generators (0.4.6)
-    nokogiri (1.5.0-java)
+    nokogiri (1.8.1-java)
     polyglot (0.3.3)
     rack (1.3.5)
     rack-cache (1.1)
@@ -111,7 +106,10 @@ DEPENDENCIES
   jruby-openssl
   json
   kirk (~> 0.2.0.beta.7)
-  mondrian-olap!
+  mondrian-olap
   nifty-generators
   rails (= 3.1.1)
   simple_form
+
+BUNDLED WITH
+   1.16.0

@@ -2,7 +2,7 @@ class MdxController < ApplicationController
   def index
     @title = "Enter MDX query"
     if params[:q]
-      @result = Dwh.olap.execute(params[:q])
+      @result = Article.olap.execute(params[:q])
       format_result
     end
   end
@@ -10,7 +10,7 @@ class MdxController < ApplicationController
   def builder
     @title = "Enter query builder expression"
     if params[:q]
-      @query = Dwh.instance_eval(params[:q])
+      @query = Article.instance_eval(params[:q])
       @mdx = @query.to_mdx
       @result = @query.execute
       format_result
